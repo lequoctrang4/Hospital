@@ -20,8 +20,10 @@ class DoctorController extends BaseController{
                 $doctor = $key;
             }
         }
-        
         return $this->view('frontend.doctor.view', ['doctor' => $doctor]);
+    }
+    public function store(){
+        
     }
 }
 ?>

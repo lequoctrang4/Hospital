@@ -15,8 +15,11 @@ class TreatController extends BaseController{
                 $patient = $key;
             }
         }
-        
         return $this->view('frontend.treat.form', ['patient' => $patient]);
+    }
+    public function history(){
+        return $this->view('frontend.treat.history');
+
     }
 }
 ?>

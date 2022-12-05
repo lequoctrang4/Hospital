@@ -16,6 +16,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Y tá</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Khoa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Phòng</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -29,7 +35,9 @@ require './Models/BaseModel.php';
 require './Controllers/BaseController.php';
 
 $controllerName = ucfirst((strtolower($_REQUEST['controller']) ?? 'Welcome') . 'Controller');
+
 require "./Controllers/${controllerName}.php";
+
 $actionName = $_REQUEST['action'] ?? 'index';
 
 $controllerObject = new $controllerName;

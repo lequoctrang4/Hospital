@@ -19,11 +19,12 @@
               </div>
               <div class="card-body">
                 <form action="?controller=patient&action=store" method="POST">
-                <div class="mb-3">
+                  <div class="mb-3">
                     <label>Số hồ sơ</label>
                     <p class="form-control">
                             <?= $patient["PATIENT_ID"]; ?>
-                        </p>
+                    </p>
+                    <input type="text" name="patient_id" value="<?= $patient["PATIENT_ID"]; ?>" class="form-control" style="display:none">
                   </div>
                   <div class="mb-3">
                     <label>Họ và tên bệnh nhân</label>
@@ -32,12 +33,27 @@
                     </p>
                   </div>
                   <div class="mb-3">
-                    <label>Bác sĩ khám</label>
-                    <p class="form-control">
-                    </p>
+                    <label>Thông tin bệnh</label>
+                    <input type="text" name="diease" class="form-control">
                   </div>
                   <div class="mb-3">
-                    <button type="submit" name="save_patient" class="btn btn-primary">Lưu bệnh nhân</button>
+                    <label>Bác sĩ khám</label>
+                    <input type="text" name="s_id" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label>Chẩn đoán của bác sĩ</label>
+                    <input type="text" name="diagnostic" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label>Lệ phí</label>
+                    <input type="text" name="price" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label>Địa điểm</label>
+                    <input type="text" name="price" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" name="save_patient" class="btn btn-primary">Lưu hồ sơ</button>
                   </div>
                 </form>
               </div>

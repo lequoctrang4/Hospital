@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Thông tin bác sĩ: <?= $doctor["FNAME"] . ' ' . $doctor['LNAME']; ?>
+                    <h4>Thông tin bác sĩ: <?php echo $doctor["FNAME"] . ' ' . $doctor['LNAME']; ?>
                         <a href="?controller=doctor&action=index" class="btn btn-primary float-end">Quay trở lại</a>
                     </h4>
                     </div>

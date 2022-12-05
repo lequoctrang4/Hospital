@@ -23,6 +23,11 @@ class DoctorModel extends BaseModel{
         $sql = "SELECT *FROM ".self::TABLE." WHERE S_ID = ${S_ID}";
         return $this->getBySQL($sql);
     }
+    public function findByName($S_Name)
+    {
+        $sql = "SELECT *FROM ".self::TABLE." WHERE FNAME || ' ' || LNAME = '${S_Name}'";
+        return $this->getBySQL($sql);
+    }
     public function insert()
     {
 

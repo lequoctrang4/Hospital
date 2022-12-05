@@ -42,5 +42,6 @@ $actionName = $_REQUEST['action'] ?? 'index';
 
 $controllerObject = new $controllerName;
 $controllerObject->$actionName();
+
 ?>
 

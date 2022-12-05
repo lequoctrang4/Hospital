@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Danh sách khoa
-                        <a href="?controller=falcuty&action=add" class="btn btn-primary float-end">Thêm khoa</a>
+                        <a href="?controller=faculty&action=add" class="btn btn-primary float-end">Thêm khoa</a>
                     </h4>
                 </div>
                 <div class="card-body">

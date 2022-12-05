@@ -44,6 +44,7 @@ class PatientController extends BaseController{
             }
             else{
                 $_SESSION['message'] ="Vui lòng nhập lại thông tin";
+                header("Location: ?controller=patient&action=add");
             }
         }
         else if(isset($_POST['delete_patient'])){
@@ -60,6 +61,7 @@ class PatientController extends BaseController{
             }
             else{
                 $_SESSION['message'] ="Cập nhập thất bại";
+                header("Location: ?controller=patient&action=edit");
             }
             
         }

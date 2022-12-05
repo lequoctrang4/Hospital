@@ -14,3 +14,8 @@
 </body>
 
 </html>
+<?php
+echo "<pre>";
+print_r($treat); //Mảng 2 chiều, Index ngoài, Associate trong
+echo "</pre>";
+?>

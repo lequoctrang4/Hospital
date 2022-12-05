@@ -21,8 +21,10 @@ class TreatController extends BaseController{
         return $this->view('frontend.treat.form', ['patient' => $patient]);
     }
     public function history(){
-        return $this->view('frontend.treat.history');
-
+        if(isset($_GET['id'])){
+            $treat = $this->TreatModel->findByPatient_id($_GET['id']);
+        }
+        return $this->view('frontend.treat.history', ['treat' => $treat]);
     }
     public function store()
     {
@@ -31,13 +33,17 @@ class TreatController extends BaseController{
             foreach($doctors as $var){
                 $doctor = $var;
             }
-            die;
-            $this->TreatModel->insert(
-                $_POST['patient_id'], $doctor['S_ID'], $_POST['patient_id'], $_POST['patient_id'],
-                $_POST['patient_id'], $_POST['patient_id']
-            );
+            $run =$this->TreatModel->insert($_POST['patient_id'], $doctor['S_ID'], $_POST['disease'], $_POST['date_treat'],
+                $_POST['price'], $_POST['diagnostic']);
+            if($run){
+                $_SESSION['message'] ="Tạo hồ sơ thành công";
+                header("Location: ?controller=patient&action=views&id=".$_POST['patient_id']);
+            }
+            else{
+                $_SESSION['message'] ="Tạo hồ sơ thất bại";
+                header("Location: ?controller=treat&action=form&id=".$_POST['patient_id']);
+            }
         }
-        die;
     }
 }
 ?>

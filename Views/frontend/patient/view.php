@@ -61,7 +61,7 @@
                             </p>                                
                         </div>
                         <a href="?controller=treat&action=form&id=<?= $patient['PATIENT_ID']; ?>" class="btn btn-primary">Tạo hồ sơ khám bệnh</a>
-                        <a href="?controller=treat&action=history" class="btn btn-success">Lịch sử khám bệnh</a>
+                        <a href="?controller=treat&action=history&id=<?= $patient['PATIENT_ID']; ?>" class="btn btn-success">Lịch sử khám bệnh</a>
                 </div>
             </div>
         </div>

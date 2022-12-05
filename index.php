@@ -17,7 +17,7 @@
           <a class="nav-link" href="#">Y tá</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Khoa</a>
+          <a class="nav-link" href="?controller=faculty&action=index">Khoa</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Phòng</a>

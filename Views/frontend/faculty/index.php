@@ -42,7 +42,7 @@
                                 <td><?= $data['F_ID'] ?></td>
                                 <td><?= $data['F_NAME']; ?></td>
                                 <td><?= $data['FULLNAME']; ?></td>
-                                <td><?= $data['START_DATE']; ?></td>
+                                <td><?= str_replace('/','-' , date('d/m/Y', strtotime($data["START_DATE"]))); ?></td>
                                 <td>
                                     <a href="?controller=falcuty&action=views&id=<?= $data['F_ID']; ?>" class="btn btn-success btn-sm">Xem</a>
                                     <a href="?controller=falcuty&action=edit&id=<?= $data['F_ID']; ?>" class="btn btn-success btn-sm">Chỉnh sửa</a>

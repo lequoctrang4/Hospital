@@ -28,9 +28,10 @@ class DoctorModel extends BaseModel{
         $sql = "SELECT *FROM ".self::TABLE." WHERE FNAME || ' ' || LNAME = '${S_Name}'";
         return $this->getBySQL($sql);
     }
-    public function insert()
+    public function getNameNotInDean()
     {
-
+        $sql = "SELECT fname || ' ' || lname FROM " . self::TABLE . " WHERE S_ID NOT IN (SELECT DEAN FROM FACULTY)";
+        return $this->getBySQL($sql);
     }
     public function delete($S_ID)
     {

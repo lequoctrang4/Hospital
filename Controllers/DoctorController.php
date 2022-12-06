@@ -7,6 +7,7 @@ class DoctorController extends BaseController{
         $this->DoctorModel = new DoctorModel;
     }
     public function index(){
+        
         $Doctor = $this->DoctorModel->getList(['S_ID', 'fname', 'lname', 'PHONE_NUMBER', 'F_NAME'], [], 100);
         return $this->view('frontend.doctor.index', ['Doctor' => $Doctor]);
     }

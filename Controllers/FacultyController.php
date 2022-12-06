@@ -1,8 +1,11 @@
 <?php
 class FacultyController extends BaseController{
     private $FacultyModel;
+    private $DoctorModel;
     public function __construct()
     {
+        $this->loadModel('DoctorModel');
+        $this->DoctorModel = new DoctorModel;
         $this->loadModel('FacultyModel');
         $this->FacultyModel = new FacultyModel;
     }
@@ -12,7 +15,8 @@ class FacultyController extends BaseController{
         return $this->view('frontend.faculty.index', ['faculty' => $faculty]);
     }
     public function add(){
-        return $this->view('frontend.faculty.add');
+        $nameDoctor = $this->DoctorModel->getNameNotInDean();
+        return $this->view('frontend.faculty.add', ['nameDoctor' => $nameDoctor]);
     }
 }
 ?>

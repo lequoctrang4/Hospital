@@ -15,14 +15,7 @@ class DoctorController extends BaseController{
         return $this->view('frontend.doctor.index', ['Doctor' => $Doctor]);
     }
     public function add(){
-        $Doctor = $this->DoctorModel->findById($_POST['id']);
-        if(isset($_GET['id'])){
-            $Doctor = $this->DoctorModel->findById($_POST['id']);
-            foreach ($Doctor as $key) {
-                $doctor = $key;
-            }
-        }
-        return $this->view('frontend.doctor.add', ['doctor' => $doctor]);
+        return $this->view('frontend.doctor.add');
     }
     public function views(){
         if(isset($_GET['id'])){

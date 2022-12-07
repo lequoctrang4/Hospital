@@ -45,10 +45,18 @@ class DoctorController extends BaseController{
     }
     public function store(){
         if(isset($_POST['save_doctor'])){
-            $faculty = $this->FacultyModel->getAll(['F_NAME'], [], 100);
+            $faculty_id = 0;
+            $faculty = $this->FacultyModel->getAll(['F_ID, F_NAME'], [], 100);
+            foreach ($faculty as $data) {
+                if ($data['F_NAME'] == $_POST['faculty']){
+                    $faculty_id = $data['F_ID'];
+                    break;
+                }
+            }
             $run = $this->DoctorModel->insert($_POST['fname'], $_POST['lname'], $_POST['S_ID'], $_POST['bdate'] ,$_POST['address'], 
-                $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty[$_POST['faculty']]['F_NAME'], 
+                $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty_id , 
                 $_POST['buil_id'], $_POST['room_id']);
+            
             if ($run) {
                 $_SESSION['message'] ="Bác sĩ đã được thêm thành công";
                 header("Location: ?controller=doctor&action=index");

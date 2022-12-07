@@ -1,7 +1,7 @@
 <?php
-//     echo "<pre>";
-// print_r($doctor);
-//     echo "</pre>";
+    // echo "<pre>";
+    // print_r($clinic);
+    // echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

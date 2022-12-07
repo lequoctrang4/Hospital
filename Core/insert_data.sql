@@ -44,7 +44,8 @@ INSERT INTO DOCTOR VALUES('Lê Minh', 'Thành', '000000000006', '27-01-1985', '�
 INSERT INTO DOCTOR VALUES('Lê Quốc', 'Duy', '000000000007', '26-01-1983', 'Đường 5, Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Việt Nam', 'Nam', 'duyle@gmail.com', '0962248782', 16000000, '12-08-2008', 16, 7, 'H4', '101');
 INSERT INTO DOCTOR VALUES('Lê Thị Phương', 'Ly', '000000000008', '26-02-1986', 'Đường 2, Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Việt Nam', 'Nữ', 'phuongly@gmail.com', '0362248782', 16000000, '12-08-2008', 18, 8, 'H4', '107');
 INSERT INTO DOCTOR VALUES('Lê Thị Phương', 'Uyên', '0000000000017', '26-02-1986', 'Việt Nam', 'Nữ', 'phuonguyen@gmail.com', '0363248782', 16000000, '12-08-2007', 18, 8, 'H1', '101');
-
+INSERT INTO Doctor VALUES('Lê', 'Trạng', '052202007402', to_date('1990-03-26', 'yyyy-mm-dd'), '82/57, đường 138, tổ 5, khu phố 2, phường Tân Phú', 'Nam', 'lequoctrang4@gmail.com', '0399609015', 30000000, to_date('2010-03-26', 'yyyy-mm-dd'), 10, 1, 'H1', '101');
+DELETE FROM DOCTOR WHERE S_ID = '052202007402';
 --Clinic
 INSERT INTO CLINIC VALUES('H1', '101', 'Phòng khám 1');
 INSERT INTO CLINIC VALUES('H1', '107', 'Phòng khám 2');

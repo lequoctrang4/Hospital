@@ -35,11 +35,17 @@ class DoctorModel extends BaseModel{
     }
     public function delete($S_ID)
     {
-        $sql = "DELETE FROM ".self::TABLE." WHERE S_ID = $S_ID";
+        $sql = "DELETE FROM ".self::TABLE." WHERE S_ID = '$S_ID'";
+        return $this->runBySQL($sql);
+    }
+    public function insert($Fname, $Lname, $S_ID, $Bdate, $Address, $Sex, $Email, $Phone_number, $Salary, $Start_date, $Experience_job, $Faculty, $Buil_id, $Room_id)
+    {
+        $sql = "INSERT INTO " . self::TABLE . " VALUES('$Fname', '$Lname', '$S_ID', to_date('$Bdate', 'yyyy-mm-dd'), '$Address', '$Sex', '$Email',
+                '$Phone_number', $Salary,  to_date('$Start_date', 'yyyy-mm-dd'), $Experience_job,  $Faculty, '$Buil_id', '$Room_id')";
         return $this->runBySQL($sql);
     }
     public function update(){
-        
+
     }
 }
 ?>

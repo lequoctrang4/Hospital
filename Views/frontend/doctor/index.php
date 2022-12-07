@@ -44,7 +44,7 @@
                                     <a href="?controller=doctor&action=views&id=<?= $data['S_ID']; ?>" class="btn btn-success btn-sm">Xem</a>
                                     <a href="?controller=doctor&action=edit&id=<?= $data['S_ID']; ?>" class="btn btn-success btn-sm">Chỉnh sửa</a>
                                     <form action="?controller=doctor&action=store" method="POST" class="d-inline">
-                                        <button type="submit" name="delete_doctor" value="" class="btn btn-danger btn-sm">Xóa</button>
+                                        <button type="submit" name="delete_doctor" value="<?= $data['S_ID']; ?>" class="btn btn-danger btn-sm">Xóa</button>
                                     </form>
                                 </td>
                             </tr>

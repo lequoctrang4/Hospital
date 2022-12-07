@@ -9,6 +9,8 @@ class DoctorController extends BaseController{
         $this->DoctorModel = new DoctorModel;
         $this->loadModel('FacultyModel');
         $this->FacultyModel = new FacultyModel;
+        $this->loadModel('ClinicModel');
+        $this->ClinicModel = new ClinicModel;
     }
     public function index(){
         
@@ -16,7 +18,9 @@ class DoctorController extends BaseController{
         return $this->view('frontend.doctor.index', ['Doctor' => $Doctor]);
     }
     public function add(){
-        return $this->view('frontend.doctor.add');
+        $faculty = $this->FacultyModel->getAll(['F_NAME'], [], 100);
+        $clinic = $this->ClinicModel->getAll(['*'], [], 100);
+        return $this->view('frontend.doctor.add', ['faculty' => $faculty, 'clinic' => $clinic]);
     }
     public function views(){
         if(isset($_GET['id'])){
@@ -36,11 +40,31 @@ class DoctorController extends BaseController{
         }
         $faculty = $this->FacultyModel->getAll(['F_NAME'], [], 100);
         $doctor['F_NAME'] = $faculty[$doctor['FACULTY']]['F_NAME'];
-        return $this->view('frontend.doctor.edit', ['doctor' => $doctor, 'faculty' => $faculty]);
+        $clinic = $this->ClinicModel->getAll(['*'], [], 100);
+        return $this->view('frontend.doctor.edit', ['doctor' => $doctor, 'faculty' => $faculty, 'clinic' => $clinic]);
     }
     public function store(){
-        if(isset($_POST['Update_patient'])){
-            $run = $this->DoctorModel->update($_POST['patient_id'], $_POST['fname'], $_POST['lname'], 
+        if(isset($_POST['save_doctor'])){
+            $faculty = $this->FacultyModel->getAll(['F_NAME'], [], 100);
+            $run = $this->DoctorModel->insert($_POST['fname'], $_POST['lname'], $_POST['S_ID'], $_POST['bdate'] ,$_POST['address'], 
+                $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty[$_POST['faculty']]['F_NAME'], 
+                $_POST['buil_id'], $_POST['room_id']);
+            if ($run) {
+                $_SESSION['message'] ="Bác sĩ đã được thêm thành công";
+                header("Location: ?controller=doctor&action=index");
+            }
+            else{
+                $_SESSION['message'] ="Vui lòng nhập lại thông tin";
+                header("Location: ?controller=doctor&action=add");
+            }
+        }
+        else if(isset($_POST['delete_doctor'])){
+            $this->DoctorModel->delete($_POST['delete_doctor']);
+            $_SESSION['message'] ="Xóa bác sĩ thành công";
+            header("Location: ?controller=doctor&action=index");
+        }
+        else if(isset($_POST['Update_patient'])){
+            $run = $this->PatientModel->update($_POST['patient_id'], $_POST['fname'], $_POST['lname'], 
                     $_POST['bdate'], $_POST['address'], $_POST['sex'], $_POST['phone'], $_POST['hin']);
             if($run){
                 $_SESSION['message'] ="Cập nhập thành công";

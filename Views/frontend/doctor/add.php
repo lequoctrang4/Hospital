@@ -20,7 +20,7 @@
                 </h4>
               </div>
               <div class="card-body">
-                <form action="?controller=patient&action=store" method="POST">
+                <form action="?controller=doctor&action=store" method="POST">
                   <div class="mb-3">
                     <label>Họ và tên đệm</label>
                     <input type="text" name="fname" class="form-control">
@@ -72,7 +72,7 @@
                   </div>
                   <div class="mb-3">
                     <label>Làm việc tại tòa</label>
-                    <input type="text" name="build_id" class="form-control" style="width: 20%">
+                    <input type="text" name="buil_id" class="form-control" style="width: 20%">
                     <label>Làm việc tại phòng</label>
                     <input type="text" name="room_id" class="form-control" style="width: 20%;">
                   </div>

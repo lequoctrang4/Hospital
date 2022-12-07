@@ -39,6 +39,7 @@ class DoctorModel extends BaseModel{
         return $this->runBySQL($sql);
     }
     public function update(){
+        
     }
 }
 ?>

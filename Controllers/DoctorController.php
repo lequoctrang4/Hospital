@@ -2,6 +2,7 @@
 class DoctorController extends BaseController{
     private $DoctorModel;
     private $FacultyModel;
+    private $ClinicModel;
     public function __construct()
     {
         $this->loadModel('DoctorModel');

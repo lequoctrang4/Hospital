@@ -20,7 +20,10 @@
           <a class="nav-link" href="?controller=faculty&action=index">Khoa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Phòng</a>
+          <a class="nav-link" href="?controller=clinic&action=index">Phòng khám bệnh</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Phòng nội trú</a>
         </li>
       </ul>
     </div>

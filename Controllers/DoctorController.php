@@ -64,10 +64,10 @@ class DoctorController extends BaseController{
             header("Location: ?controller=doctor&action=index");
         }
         else if(isset($_POST['update_doctor'])){
-            $faculty_id = $this->FacultyModel->getIdByName($_POST['faculty']);
+            $clinic = explode (',' , $_POST['clinic']);
             $run = $this->DoctorModel->update($_POST['fname'], $_POST['lname'], $_POST['S_ID'], $_POST['bdate'] ,$_POST['address'], 
-            $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty_id, 
-            $_POST['build_id'], $_POST['room_id'], $_REQUEST['id']);
+            $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $_POST['faculty'], 
+            $clinic[1], $clinic[0], $_REQUEST['id']);
             if($run){
                 $_SESSION['message'] ="Cập nhập thành công";
                 header("Location: ?controller=doctor&action=index");

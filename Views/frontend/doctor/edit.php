@@ -35,11 +35,11 @@
                   </div>
                   <div class="mb-3">
                     <label>Mã số bác sĩ</label>
-                    <input type="text" name="S_ID" value="<?= $doctor['S_ID']; ?>" class="form-control" style="width: 20%">
+                    <input type="text" name="S_ID" value="<?= $doctor['S_ID']; ?>" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Ngày, tháng, năm, sinh</label>
-                    <input type="date" name="bdate" value="<?= str_replace('/','-' , date('Y/m/d', strtotime($doctor["BDATE"]))) ?>" class="form-control" style="width: 20%">
+                    <input type="date" name="bdate" value="<?= str_replace('/','-' , date('Y/m/d', strtotime($doctor["BDATE"]))) ?>" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Giới tính</label>
@@ -52,7 +52,7 @@
                   </div>
                   <div class="mb-3">
                     <label>Số điện thoại</label>
-                    <input type="text" name="phone" value="<?= $doctor['PHONE_NUMBER']; ?>" class="form-control" style="width: 20%">
+                    <input type="text" name="phone" value="<?= $doctor['PHONE_NUMBER']; ?>" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Email</label>
@@ -64,22 +64,38 @@
                   </div>
                   <div class="mb-3">
                     <label>Ngày bắt đầu làm việc</label>
-                    <input type="date" name="start_date" value="<?= str_replace('/','-' , date('Y/m/d', strtotime($doctor["START_DATE"]))) ?>" class="form-control" style="width: 20%">
+                    <input type="date" name="start_date" value="<?= str_replace('/','-' , date('Y/m/d', strtotime($doctor["START_DATE"]))) ?>" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Số năm kinh nghiệm làm việc</label>
-                    <input type="text" name="expe" value="<?= $doctor['EXPERIENCE_JOB']; ?>" class="form-control" style="width: 20%">
+                    <input type="text" name="expe" value="<?= $doctor['EXPERIENCE_JOB']; ?>" class="form-control">
                   </div>
                   <div class="mb-3">
-                    <label>Khoa</label>
-                    <input type="text" name="faculty" value="<?= $doctor['F_NAME']; ?>" class="form-control">
+                  <label>Khoa</label>
+                    <select class="form-select" id ="faculty" name="faculty" aria-label="Khoa">
+                      <?php
+                        foreach ($faculty as $data) {
+                          ?>
+                          <option value="<?=$data['F_ID']?>"><?= $data['F_NAME']?></option>
+                          <?php
+                        }
+                      ?>
+                    </select>
                   </div>
+                  <script> document.getElementById("faculty").value = "<?=$doctor['FACULTY']?>"; </script>
                   <div class="mb-3">
-                    <label>Làm việc tại tòa</label>
-                    <input type="text" name="build_id" value="<?= $doctor['BUIL_ID']; ?>" class="form-control" style="width: 20%">
-                    <label>Làm việc tại phòng</label>
-                    <input type="text" name="room_id" value="<?= $doctor['ROOM_ID']; ?>" class="form-control" style="width: 20%;">
+                    <label>Phòng làm việc</label>
+                    <select class="form-select" id="clinic" name="clinic" aria-label="Khoa">
+                      <?php
+                        foreach ($clinic as $data) {
+                          ?>
+                          <option value="<?= $data['ROOM_ID'] .','. $data['BUIL_ID']?>"><?=  $data['ROOM_ID']. $data['BUIL_ID']?></option>
+                          <?php
+                        }
+                      ?>
+                    </select>
                   </div>
+                  <script> document.getElementById("clinic").value = "<?=$doctor['ROOM_ID'] .','. $doctor['BUIL_ID']?>"; </script>
                   <div class="mb-3">
                     <button type="submit" name="update_doctor" class="btn btn-primary">Lưu</button>
                   </div>
@@ -93,3 +109,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
 </body>
 </html>
+<?php
+?>

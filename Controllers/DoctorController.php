@@ -18,7 +18,7 @@ class DoctorController extends BaseController{
         return $this->view('frontend.doctor.index', ['Doctor' => $Doctor]);
     }
     public function add(){
-        $faculty = $this->FacultyModel->getAll(['F_NAME'], [], 100);
+        $faculty = $this->FacultyModel->getAll(['F_ID', 'F_NAME'], [], 100);
         $clinic = $this->ClinicModel->getAll(['*'], [], 100);
         return $this->view('frontend.doctor.add', ['faculty' => $faculty, 'clinic' => $clinic]);
     }
@@ -38,18 +38,17 @@ class DoctorController extends BaseController{
                 $doctor = $key;
             }
         }
-        $faculty = $this->FacultyModel->getAll(['F_NAME'], [], 100);
+        $faculty = $this->FacultyModel->getAll(['F_ID, F_NAME'], [], 100);
         $doctor['F_NAME'] = $faculty[$doctor['FACULTY']]['F_NAME'];
         $clinic = $this->ClinicModel->getAll(['*'], [], 100);
         return $this->view('frontend.doctor.edit', ['doctor' => $doctor, 'faculty' => $faculty, 'clinic' => $clinic]);
     }
     public function store(){
         if(isset($_POST['save_doctor'])){
-            $faculty_id = $this->FacultyModel->getIdByName($_POST['faculty']);
+            $clinic = explode (',' , $_POST['clinic']);
             $run = $this->DoctorModel->insert($_POST['fname'], $_POST['lname'], $_POST['S_ID'], $_POST['bdate'] ,$_POST['address'], 
-                $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty_id , 
-                $_POST['buil_id'], $_POST['room_id']);
-            
+                $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $_POST['faculty'] , 
+                $clinic[1], $clinic[0]);
             if ($run) {
                 $_SESSION['message'] ="Bác sĩ đã được thêm thành công";
                 header("Location: ?controller=doctor&action=index");

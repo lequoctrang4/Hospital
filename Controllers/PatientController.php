@@ -19,19 +19,14 @@ class PatientController extends BaseController{
     }
     public function views(){
         if(isset($_GET['id'])){
-            $patients = $this->PatientModel->findById($_GET['id']);
-            foreach ($patients as $key) {
-                $patient = $key;
-            }
+            $patient = $this->PatientModel->findById($_GET['id']);
+
         }
         return $this->view('frontend.patient.view', ['patient' => $patient]);
     }
     public function edit(){
         if(isset($_GET['id'])){
-            $patients = $this->PatientModel->findById($_GET['id']);
-            foreach ($patients as $key) {
-                $patient = $key;
-            }
+            $patient = $this->PatientModel->findById($_GET['id']);
         }
         return $this->view('frontend.patient.edit', ['patient' => $patient]);
     }

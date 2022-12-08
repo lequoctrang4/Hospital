@@ -15,6 +15,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Lịch sử khám bệnh của bệnh nhân <?= $name;?>
+                    <a href="?controller=patient&action=views&id=<?= $_REQUEST['id'];?>" class="btn btn-danger float-end">Quay trở lại</a>
                     </h4>
                 </div>
                 <div class="card-body">

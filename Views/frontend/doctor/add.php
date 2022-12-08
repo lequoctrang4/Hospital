@@ -31,11 +31,11 @@
                   </div>
                   <div class="mb-3">
                     <label>Mã số bác sĩ</label>
-                    <input type="text" name="S_ID" class="form-control" style="width: 20%">
+                    <input type="text" name="S_ID" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Ngày, tháng, năm, sinh</label>
-                    <input type="date" name="bdate" class="form-control" style="width: 20%">
+                    <input type="date" name="bdate" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Giới tính</label>
@@ -48,7 +48,7 @@
                   </div>
                   <div class="mb-3">
                     <label>Số điện thoại</label>
-                    <input type="text" name="phone" class="form-control" style="width: 20%">
+                    <input type="text" name="phone" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Email</label>
@@ -60,22 +60,32 @@
                   </div>
                   <div class="mb-3">
                     <label>Ngày bắt đầu làm việc</label>
-                    <input type="date" name="start_date" class="form-control" style="width: 20%">
+                    <input type="date" name="start_date" class="form-control">
                   </div>
                   <div class="mb-3">
                     <label>Số năm kinh nghiệm làm việc</label>
-                    <input type="text" name="expe" class="form-control" style="width: 20%">
+                    <input type="text" name="expe" class="form-control">
                   </div>
-                  <div class="mb-3">
-                    <label>Khoa</label>
-                    <input type="text" name="faculty" class="form-control">
-                  </div>
-                  <div class="mb-3">
-                    <label>Làm việc tại tòa</label>
-                    <input type="text" name="buil_id" class="form-control" style="width: 20%">
-                    <label>Làm việc tại phòng</label>
-                    <input type="text" name="room_id" class="form-control" style="width: 20%;">
-                  </div>
+                  <select class="form-select mb-3" name="faculty" aria-label="Khoa">
+                    <option selected>Chọn khoa</option>
+                    <?php
+                      foreach ($faculty as $data) {
+                        ?>
+                        <option value="<?=$data['F_ID']?>"><?= $data['F_NAME']?></option>
+                        <?php
+                      }
+                    ?>
+                  </select>
+                  <select class="form-select mb-3" name="clinic" aria-label="Khoa">
+                    <option selected>Nơi làm việc</option>
+                    <?php
+                      foreach ($clinic as $data) {
+                        ?>
+                        <option value="<?= $data['ROOM_ID'] .','. $data['BUIL_ID']?>"><?=  $data['ROOM_ID']. $data['BUIL_ID']?></option>
+                        <?php
+                      }
+                    ?>
+                  </select>
                   <div class="mb-3">
                     <button type="submit" name="save_doctor" class="btn btn-primary">Lưu</button>
                   </div>

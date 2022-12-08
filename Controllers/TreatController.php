@@ -13,10 +13,7 @@ class TreatController extends BaseController{
     }
     public function form(){
         if(isset($_GET['id'])){
-            $patients = $this->PatientModel->findbyID($_GET['id']);
-            foreach ($patients as $key) {
-                $patient = $key;
-            }
+            $patient = $this->PatientModel->findbyID($_GET['id']);
         }
         return $this->view('frontend.treat.form', ['patient' => $patient]);
     }

@@ -10,7 +10,7 @@ class PatientModel extends BaseModel
     public function findById($id)
     {
         $sql = "SELECT *FROM ".self::TABLE." WHERE PATIENT_ID = ${id}";
-        return $this->getBySQL($sql);
+        return $this->getOneSQL($sql);
     }
     public function insert($fname, $lname, $bdate, $address, $sex, $PHONE_NUMBER, $H_I_N)
     {

@@ -16,5 +16,16 @@ class FacultyModel extends BaseModel{
         $query = "SELECT ${column} FROM ".self::TABLE." INNER JOIN DOCTOR ON DOCTOR.S_ID = DEAN${orderby} FETCH FIRST ${limit} ROWS ONLY";
         return $this->getBySQL($query);
     }
+    public function getIdByName($name){
+        $faculty_id = 0;
+        $faculty = $this->getAll(['F_ID, F_NAME'], [], 100);
+        foreach ($faculty as $data) {
+            if ($data['F_NAME'] == $name){
+                $faculty_id = $data['F_ID'];
+                break;
+            }
+        }
+        return $faculty_id;
+    }
 }
 ?>

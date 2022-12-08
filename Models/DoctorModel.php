@@ -44,8 +44,11 @@ class DoctorModel extends BaseModel{
                 '$Phone_number', $Salary,  to_date('$Start_date', 'yyyy-mm-dd'), $Experience_job,  $Faculty, '$Buil_id', '$Room_id')";
         return $this->runBySQL($sql);
     }
-    public function update(){
-
+    public function update($Fname, $Lname, $S_ID, $Bdate, $Address, $Sex, $Email, $Phone_number, $Salary, $Start_date, $Experience_job, $Faculty, $Buil_id, $Room_id, $OldS_ID){
+        $sql = "UPDATE " . self::TABLE . " SET fname = '$Fname', Lname = '$Lname', S_ID = '$S_ID', Bdate =  to_date('$Bdate', 'yyyy-mm-dd'), 
+                Address = '$Address', Sex = '$Sex', Email = '$Email', Phone_number = '$Phone_number', salary = $Salary, Start_date = to_date('$Start_date', 'yyyy-mm-dd'), 
+                Experience_job = $Experience_job, Faculty = $Faculty, Buil_ID = '$Buil_id', Room_id = '$Room_id' WHERE S_ID = '$OldS_ID'";
+        return $this->runBySQL($sql);
     }
 }
 ?>

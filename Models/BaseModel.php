@@ -32,6 +32,12 @@ class BaseModel extends Database{
         }
         return $data;
     }
+    public function getOneSQL($sql){
+        $stid = oci_parse($this->connect, $sql);
+        oci_execute($stid);
+        $data =[];
+        return oci_fetch_assoc($stid);
+    }
     public function runBySQL($sql){
         $stid = oci_parse($this->connect, $sql);
         return oci_execute($stid);

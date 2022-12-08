@@ -24,7 +24,9 @@ class TreatController extends BaseController{
         if(isset($_GET['id'])){
             $treat = $this->TreatModel->findByPatient_id($_GET['id']);
         }
-        return $this->view('frontend.treat.history', ['treat' => $treat]);
+        $name = $this->PatientModel->findById($_GET['id']);
+        $name = $name['FNAME'] . ' ' . $name['LNAME'];
+        return $this->view('frontend.treat.history', ['treat' => $treat, 'name' => $name]);
     }
     public function store()
     {

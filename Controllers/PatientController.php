@@ -61,7 +61,7 @@ class PatientController extends BaseController{
             }
             else{
                 $_SESSION['message'] ="Cập nhập thất bại";
-                header("Location: ?controller=patient&action=edit");
+                header("Location: ?controller=patient&action=edit&id={$_POST['patient_id']}");
             }
             
         }

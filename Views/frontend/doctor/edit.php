@@ -24,7 +24,7 @@
                 </h4>
               </div>
               <div class="card-body">
-                <form action="?controller=doctor&action=store" method="POST">
+                <form action="?controller=doctor&action=store&id=<?= $doctor['S_ID']; ?>" method="POST">
                   <div class="mb-3">
                     <label>Họ và tên đệm</label>
                     <input type="text" name="fname" value="<?= $doctor['FNAME']; ?>" class="form-control">

@@ -45,14 +45,7 @@ class DoctorController extends BaseController{
     }
     public function store(){
         if(isset($_POST['save_doctor'])){
-            $faculty_id = 0;
-            $faculty = $this->FacultyModel->getAll(['F_ID, F_NAME'], [], 100);
-            foreach ($faculty as $data) {
-                if ($data['F_NAME'] == $_POST['faculty']){
-                    $faculty_id = $data['F_ID'];
-                    break;
-                }
-            }
+            $faculty_id = $this->FacultyModel->getIdByName($_POST['faculty']);
             $run = $this->DoctorModel->insert($_POST['fname'], $_POST['lname'], $_POST['S_ID'], $_POST['bdate'] ,$_POST['address'], 
                 $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty_id , 
                 $_POST['buil_id'], $_POST['room_id']);
@@ -71,16 +64,18 @@ class DoctorController extends BaseController{
             $_SESSION['message'] ="Xóa bác sĩ thành công";
             header("Location: ?controller=doctor&action=index");
         }
-        else if(isset($_POST['Update_patient'])){
-            $run = $this->PatientModel->update($_POST['patient_id'], $_POST['fname'], $_POST['lname'], 
-                    $_POST['bdate'], $_POST['address'], $_POST['sex'], $_POST['phone'], $_POST['hin']);
+        else if(isset($_POST['update_doctor'])){
+            $faculty_id = $this->FacultyModel->getIdByName($_POST['faculty']);
+            $run = $this->DoctorModel->update($_POST['fname'], $_POST['lname'], $_POST['S_ID'], $_POST['bdate'] ,$_POST['address'], 
+            $_POST['sex'],  $_POST['email'], $_POST['phone'], $_POST['salary'], $_POST['start_date'], $_POST['expe'], $faculty_id, 
+            $_POST['build_id'], $_POST['room_id'], $_REQUEST['id']);
             if($run){
                 $_SESSION['message'] ="Cập nhập thành công";
-                header("Location: ?controller=patient&action=index");
+                header("Location: ?controller=doctor&action=index");
             }
             else{
                 $_SESSION['message'] ="Cập nhập thất bại";
-                header("Location: ?controller=patient&action=edit");
+                header("Location: ?controller=doctor&action=edit&id={$_REQUEST['id']}");
             }
             
         }
